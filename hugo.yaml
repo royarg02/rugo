@@ -1,0 +1,35 @@
+baseURL: 'https://example.org/'
+languageCode: 'en-us'
+title: 'My New Hugo Site'
+
+params:
+  includeAdditionalFavicons:
+    - file:
+      size:
+    - name:
+      file:
+
+  termsInSection: true
+  includeCountWithTerm: true
+  maxSectionListItems: 5
+
+  websiteCredits:
+    - name: 'Hugo'
+      url: 'https://gohugo.io'
+    - name: 'Rugo'
+      url: 'https://github.com/royarg02/rugo'
+
+  gpg:
+    key:
+    fingerprint:
+
+  oss:
+    source: 'https://github.com/royarg02/rugo'
+    license:
+      name: 'MPL-2.0'
+      url: 'https://www.mozilla.org/en-US/MPL/2.0/'
+
+module:
+  hugoVersion:
+    extended: false
+    min: 0.120.0

@@ -1,0 +1,6 @@
+User-agent: *
+{{ range where .Pages "Params.excludeCrawler" true -}}
+  Disallow: {{ .RelPermalink }}
+{{ end -}}
+
+Sitemap: {{ default "sitemap.xml" .Sitemap.Filename | absLangURL }}

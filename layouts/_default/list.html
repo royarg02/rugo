@@ -1,0 +1,22 @@
+{{/*
+  This Source Code Form is subject to the terms of the Mozilla Public License,
+  v. 2.0. If a copy of the MPL was not distributed with this file, You can
+  obtain one at https://mozilla.org/MPL/2.0/.
+*/}}
+{{ define "main" }}
+  {{ .Content }}
+  {{ if .IsSection -}}
+    {{- if .Site.Params.termsInSection }}
+      {{- range $taxonomy, $pages := .Site.Taxonomies }}
+        {{ partial "list-all-terms.html" (dict "context" $ "term" $taxonomy) }}
+        <hr>
+      {{ end -}}
+    {{ end -}}
+  {{- end }}
+  <ul>
+    <h2>{{ len .Pages }} Posts</h2>
+    {{ range .Pages.ByPublishDate.Reverse }}
+      <li><a href="{{ partial "page-permalink.html" . }}">{{ .LinkTitle | markdownify }}</a></li>
+    {{ end }}
+  </ul>
+{{ end }}

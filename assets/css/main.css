@@ -1,0 +1,201 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public License,
+ * v. 2.0. If a copy of the MPL was not distributed with this file, You can
+ * obtain one at https://mozilla.org/MPL/2.0/.
+ */
+:root {
+    --transition-duration: 150ms;
+    --transition-timing-function: ease-out;
+    --sidebar-width: clamp(23.5rem, 27%, 27rem);
+    --measure: 58.75rem;
+}
+
+html {
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
+}
+
+* {
+    transition-property: color, background-color;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-timing-function);
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none; /* remove underlines*/
+}
+
+a:not(.anchor):not(.taxonomylist *):hover {
+    text-decoration: underline;
+}
+
+body {
+    margin: 0rem;
+    background-color: var(--background);
+    font-family: sans-serif;
+    color: var(--on-background);
+}
+
+hr {
+    height: 0.0625rem;
+    background-color: var(--primary);
+    margin: 0rem;
+}
+
+ul {
+    list-style-type: none;
+    padding-inline-start: 0rem;
+}
+
+li {
+    margin: 0rem 0rem 0.25rem 0rem;
+}
+
+blockquote {
+    background-color: var(--tertiary-container);
+    color: var(--on-tertiary-container);
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    min-width: 6.25rem;
+    margin: 0rem 0.5rem 0rem 0.5rem;
+}
+
+header {
+    padding: 0rem 0.5rem 0rem 0.5rem;
+    border-radius: 0rem 0rem 0.75rem 0.75rem;
+}
+
+body > header,
+body > footer {
+    display: none;
+    background-color: var(--background-lvl2);
+}
+
+main {
+    padding: 0.5rem;
+    /* Left margin should at least account for sidebar, subtract padding from the calculated value */
+    margin: 0rem 0rem 0rem max(calc(((100vw - var(--sidebar-width) - var(--measure))/2) + var(--sidebar-width) - 0.5rem), var(--sidebar-width));
+    max-width: var(--measure);
+}
+
+figure {
+    margin: 0.5rem;
+}
+
+figure > img, video {
+    border-radius: 1rem 1rem 0rem 0rem;
+}
+
+figure > img:only-child, video:only-child {
+    border-radius: 1rem;
+}
+
+figcaption, video + p {
+    color: var(--on-primary-container);
+    background-color: var(--primary-container);
+    border-radius: 0rem 0rem 1rem 1rem;
+    padding: 0.5rem;
+}
+
+figcaption > p, video + p {
+    margin: 0rem;
+}
+
+pre {
+    border-style: solid;
+    border-color: var(--primary);
+    border-width: 0.0625rem;
+    border-radius: 0.75rem;
+    padding: 0.5rem;
+    overflow: scroll;
+}
+
+details {
+    border-color: var(--primary);
+    border-width: 0.0625rem 0rem 0.0625rem 0rem;
+    border-style: solid;
+    padding: 0.5rem;
+}
+
+summary {
+    cursor: pointer;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+summary > .summary-title {
+    flex-grow: 2;
+}
+
+summary > .summary-marker {
+    font-weight: 700;
+    transition-property: transform;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-timing-function);
+}
+
+details[open] > summary > .summary-marker {
+  transform: rotate(180deg);
+}
+
+footer {
+    padding: 0rem 0.5rem 0rem 0.5rem;
+    border-radius: 0.75rem 0.75rem 0rem 0rem;
+}
+
+#site-title > a:hover {
+    text-decoration: none !important;
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    width: var(--sidebar-width);
+    height: 100vh;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0rem;
+    border-radius: 0rem 0.75rem 0.75rem 0rem;
+    overflow: auto;
+    background-color: var(--background-lvl2);
+}
+
+#sidebar > header {
+    flex-grow: 2;
+}
+
+#profiles > li {
+    display: inline;
+}
+
+.taxonomylist > li {
+    display: inline-block;
+    border-radius: 1.125rem;
+    background-color: var(--tertiary-container);
+    margin-inline-end: 0.25rem;
+}
+
+.taxonomylist > li > a {
+    display: block;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    color: var(--on-tertiary-container);
+}
+
+.figure-float-right {
+    float: right;
+}
+
+.figure-smaller {
+    max-width: 25rem;
+    margin: auto;
+}
+
+.anchor:hover {
+    color: var(--tertiary);
+}
+
+.svg-container {
+    font-size: 0.75rem;
+}

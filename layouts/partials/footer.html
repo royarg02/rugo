@@ -1,0 +1,37 @@
+{{/*
+  This Source Code Form is subject to the terms of the Mozilla Public License,
+  v. 2.0. If a copy of the MPL was not distributed with this file, You can
+  obtain one at https://mozilla.org/MPL/2.0/.
+*/}}
+<footer>
+  <p>
+    {{ htmlUnescape .Site.Copyright }}
+    {{ if .IsPage }}
+      {{- with .Params.license -}}
+        <br>Work licensed under <a href="{{ .url }}" target="_blank">{{htmlEscape .name }}</a>.
+      {{- end -}}
+    {{ else }}
+      {{- with .Site.Params.gpg -}}
+        <br>
+        {{ with .fingerprint }}PGP fingerprint:&nbsp;{{ end }}
+        <a href="{{ .key | absURL }}" {{ with .fingerprint }}title="Get public key" {{ end }}type="application/pgp-keys">
+          {{ with .fingerprint }}<code>{{ . }}</code>{{ else }}Get public key{{ end }}
+        </a>
+      {{- end -}}
+    {{ end }}
+  </p>
+  <p>
+    {{- with .Site.Params.websiteCredits -}}
+      Powered by&#32;
+      {{- $creditsLen := len . -}}
+      {{- range $index, $entry := . -}}
+        {{ if $index }}{{ if eq $index (sub $creditsLen 1) }}&#32;&{{ else }},{{ end }}&#32;{{ end }}
+        <a href="{{ $entry.url }}">{{ $entry.name }}</a>
+      {{- end -}}
+    {{- end -}}.
+    {{ with .Site.Params.oss -}}
+      <br><a href="{{ .source }}">Source code</a> licensed under <a href="{{ .license.url }}" target="_blank">{{ htmlEscape .license.name }}</a>.
+    {{- end }}
+  </p>
+  {{ partial "list-data.html" (dict "context" . "data" "profiles") }}
+</footer>

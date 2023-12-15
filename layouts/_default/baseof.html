@@ -1,0 +1,53 @@
+{{/*
+  This Source Code Form is subject to the terms of the Mozilla Public License,
+  v. 2.0. If a copy of the MPL was not distributed with this file, You can
+  obtain one at https://mozilla.org/MPL/2.0/.
+*/}}
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{ with .Description -}}
+      <meta name="description" content="{{ . }}">
+    {{- end }}
+    {{ with .Site.Params.includeAdditionalFavicons -}}
+      {{ range $entry := . -}}
+        <link rel="{{ $entry.name | default "icon" }}"{{ with $entry.size }} sizes="{{ . }}"{{ end }} href="{{ $entry.file | absURL }}">
+      {{ end -}}
+    {{ end -}}
+    {{ with .OutputFormats.Get "rss" -}}
+      {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+    {{ end }}
+    {{- $CSS := resources.Match "css/*.css" | resources.Concat "style.css" | resources.Minify | resources.Fingerprint -}}
+    <link rel="stylesheet" type="text/css" href="{{ $CSS.RelPermalink }}">
+    {{ if .IsPage -}}
+      {{- $pageCSS := resources.GetMatch "css/conditionals/page.css" | resources.Minify | resources.Fingerprint -}}
+      <link rel="stylesheet" type="text/css" href="{{ $pageCSS.RelPermalink }}">
+    {{ end }}
+    {{ with .Params.author -}}
+      <meta name="author" content="{{ . }}">
+    {{- end }}
+    {{ with .Params.license -}}
+      <link rel="license" href="{{ .url }}">
+    {{- end }}
+    {{ partial "extend-head.html" . }}
+    <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+  </head>
+  <body>
+    {{ block "sidebar" . }}
+      {{ partial "sidebar.html" . }}
+    {{ end }}
+    {{ block "header" . }}
+      {{ partial "header.html" . }}
+    {{ end }}
+    <main>
+      {{ block "main" . }}
+        {{ .Content }}
+      {{ end }}
+    </main>
+    {{ block "footer" . }}
+      {{ partial "footer.html" . }}
+    {{ end }}
+  </body>
+</html>

@@ -1,0 +1,36 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public License,
+ * v. 2.0. If a copy of the MPL was not distributed with this file, You can
+ * obtain one at https://mozilla.org/MPL/2.0/.
+ */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* measure */
+@media screen and (max-width: 58.75rem) {
+    #sidebar {
+        display: none;
+    }
+    body > header {
+        display: block;
+        padding: 0.5rem;
+    }
+    body > footer {
+        display: block;
+        text-align: center;
+        padding: 0.5rem;
+    }
+    main {
+        margin: 0rem;
+        max-width: 100vw;
+    }
+}
+
+@media screen and (max-width: 33.75rem) {
+    .figure-float-right {
+        float: none;
+    }
+}

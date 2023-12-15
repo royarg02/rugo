@@ -1,0 +1,22 @@
+{{/*
+  This Source Code Form is subject to the terms of the Mozilla Public License,
+  v. 2.0. If a copy of the MPL was not distributed with this file, You can
+  obtain one at https://mozilla.org/MPL/2.0/.
+*/}}
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="{{ .Permalink }}">
+    {{- $CSS := resources.Match "css/*.css" | resources.Concat "style.css" | resources.Minify | resources.Fingerprint -}}
+    <link rel="stylesheet" type="text/css" href="{{ $CSS.RelPermalink }}">
+    <meta http-equiv="refresh" content="0; url={{ .Permalink }}">
+    <title>{{ .Page.Title }} | {{ site.Title }}</title>
+  </head>
+  <body>
+    <main>
+      <strong>Redirecting to</strong> <a href="{{ .Permalink }}">{{ .Permalink }}</a>
+    </main>
+  </body>
+</html>

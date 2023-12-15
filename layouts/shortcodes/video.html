@@ -1,0 +1,13 @@
+{{/*
+  This Source Code Form is subject to the terms of the Mozilla Public License,
+  v. 2.0. If a copy of the MPL was not distributed with this file, You can
+  obtain one at https://mozilla.org/MPL/2.0/.
+*/}}
+<div {{ with (.Get "class") }}class="{{ . }}"{{ end }}>
+  <video controls width="{{ .Get "width" | default 500 }}">
+    <source src="{{ .Get "src" }}" type="{{ .Get "type" }}">
+  </video>
+  {{ with (.Get "caption") }}
+    <p>{{ . | markdownify }}</p>
+  {{ end }}
+</div>

@@ -1,0 +1,12 @@
+name = "Rugo"
+license = "MPL-2.0"
+licenselink = "https://github.com/royarg02/rugo/blob/master/LICENSE"
+description = "A simple Hugo theme for blogs"
+homepage = "https://github.com/royarg02/rugo"
+demosite = "https://royarg02.github.io"
+tags = ["blog", "dark", "light", "minimalist", "responsive", "simple"]
+features = ["dark-mode", "blog", "responsive", "single-column", "table-of-contents"]
+
+[author]
+  name = "Anurag Roy"
+  homepage = "https://royarg02.github.io"

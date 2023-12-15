@@ -1,0 +1,15 @@
+{{/*
+  This Source Code Form is subject to the terms of the Mozilla Public License,
+  v. 2.0. If a copy of the MPL was not distributed with this file, You can
+  obtain one at https://mozilla.org/MPL/2.0/.
+*/}}
+{{- $itemCount := default 5 .context.Site.Params.maxSectionListItems -}}
+{{- $items := where .context.Site.RegularPages.ByPublishDate.Reverse "Section" "=" .section -}}
+<ul>
+  {{- range  first $itemCount $items }}
+    <li><a href="{{ partial "page-permalink.html" . }}">{{ .LinkTitle | markdownify }}</a></li>
+  {{- end }}
+  {{ if gt (len $items) $itemCount -}}
+    <li><a href="{{ absURL .section }}">See more {{ replace .section "-" " " }}s...</a></li>
+  {{- end }}
+</ul>

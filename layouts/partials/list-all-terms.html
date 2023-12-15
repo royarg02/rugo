@@ -1,0 +1,20 @@
+{{/*
+  This Source Code Form is subject to the terms of the Mozilla Public License,
+  v. 2.0. If a copy of the MPL was not distributed with this file, You can
+  obtain one at https://mozilla.org/MPL/2.0/.
+*/}}
+{{- $terms := index .context.Site.Taxonomies .term -}}
+{{- $termsCount := len $terms -}}
+<h2>{{ partial "pluralize.html" (dict "count" $termsCount "term" .term) }}</h2>
+<ul class="taxonomylist">
+  {{ range $terms.Alphabetical }}
+    <li>
+      <a href="{{ .Page.Permalink }}">
+        {{- .Page.LinkTitle | markdownify }}
+        {{- if ($.context.Site.Params.includeCountWithTerm | default true) -}}
+          ({{ .Count }})
+        {{- end -}}
+      </a>
+    </li>
+  {{- end }}
+</ul>
