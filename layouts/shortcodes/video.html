@@ -4,7 +4,7 @@
   obtain one at https://mozilla.org/MPL/2.0/.
 */}}
 <div {{ with (.Get "class") }}class="{{ . }}"{{ end }}>
-  <video controls width="{{ .Get "width" | default 500 }}">
+  <video controls width="{{ default 500 (.Get "width") }}">
     <source src="{{ .Get "src" }}" type="{{ .Get "type" }}">
   </video>
   {{ with (.Get "caption") }}

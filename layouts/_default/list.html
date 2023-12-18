@@ -5,12 +5,10 @@
 */}}
 {{ define "main" }}
   {{ .Content }}
-  {{ if .IsSection -}}
-    {{- if .Site.Params.termsInSection }}
-      {{- range $taxonomy, $pages := .Site.Taxonomies }}
-        {{ partial "list-all-terms.html" (dict "context" $ "term" $taxonomy) }}
-        <hr>
-      {{ end -}}
+  {{ if and .IsSection .Site.Params.termsInSection }}
+    {{- range $taxonomy, $pages := .Site.Taxonomies }}
+      {{ partial "list-all-terms.html" (dict "context" $ "term" $taxonomy) }}
+      <hr>
     {{ end -}}
   {{- end }}
   <ul>

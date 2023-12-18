@@ -13,7 +13,7 @@
     {{- end }}
     {{ with .Site.Params.includeAdditionalFavicons -}}
       {{ range $entry := . -}}
-        <link rel="{{ $entry.name | default "icon" }}"{{ with $entry.size }} sizes="{{ . }}"{{ end }} href="{{ $entry.file | absURL }}">
+        <link rel="{{ default "icon" $entry.name }}"{{ with $entry.size }} sizes="{{ . }}"{{ end }} href="{{ $entry.file | absURL }}">
       {{ end -}}
     {{ end -}}
     {{ with .OutputFormats.Get "rss" -}}

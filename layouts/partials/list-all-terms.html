@@ -11,7 +11,7 @@
     <li>
       <a href="{{ .Page.Permalink }}">
         {{- .Page.LinkTitle | markdownify }}
-        {{- if ($.context.Site.Params.includeCountWithTerm | default true) -}}
+        {{- if default true $.context.Site.Params.includeCountWithTerm -}}
           ({{ .Count }})
         {{- end -}}
       </a>

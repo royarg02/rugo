@@ -9,6 +9,6 @@
     <li>
       <a href="{{ .RelPermalink }}">{{ if eq $.taxonomy "tags" }}#{{ end }}{{ .LinkTitle }}</a>
     </li>
-  {{- end }}
-  </div>
+  {{ end -}}
+  </ul>
 {{ end }}
