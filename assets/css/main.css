@@ -174,13 +174,17 @@ footer {
     display: inline-block;
     border-radius: 1.125rem;
     background-color: var(--tertiary-container);
-    margin-inline-end: 0.25rem;
 }
 
 .taxonomylist > li > a {
     display: block;
     padding: 0.5rem 1rem 0.5rem 1rem;
     color: var(--on-tertiary-container);
+}
+
+#profiles > li,
+.taxonomylist > li {
+    margin-inline-end: 0.25rem;
 }
 
 .figure-float-right {

@@ -25,7 +25,7 @@
       Powered by&#32;
       {{- $creditsLen := len . -}}
       {{- range $index, $entry := . -}}
-        {{ if $index }}{{ if eq $index (sub $creditsLen 1) }}&#32;&{{ else }},{{ end }}&#32;{{ end }}
+        {{- if $index }}{{ if eq $index (sub $creditsLen 1) }}&#32;&{{ else }},{{ end }}&#32;{{ end -}}
         <a href="{{ $entry.url }}">{{ $entry.name }}</a>
       {{- end -}}
     {{- end -}}.

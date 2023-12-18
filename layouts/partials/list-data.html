@@ -9,10 +9,10 @@
       {{ if isset $entry "misc" -}}
         {{ $entry.name }}<br>
       {{ end -}}
-      <a href="{{ $entry.url | absURL }}">{{ if isset $entry "misc" }}Link{{ else }}{{ $entry.name }}{{ end }}</a>&#32;
+      <a href="{{ $entry.url | absURL }}">{{ if isset $entry "misc" }}Link{{ else }}{{ $entry.name }}{{ end }}</a>
       {{- with $entry.misc -}}
         {{- range $key, $value := . -}}
-          <a href="{{ $value }}">{{ humanize $key }}</a>&#32;
+          &#32;<a href="{{ $value }}">{{ humanize $key }}</a>
         {{- end -}}
       {{- end }}
     </li>
