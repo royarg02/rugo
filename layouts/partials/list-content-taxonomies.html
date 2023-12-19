@@ -4,9 +4,9 @@
   obtain one at https://mozilla.org/MPL/2.0/.
 */}}
 {{ with .context.GetTerms .taxonomy }}
-  <ul class=taxonomylist>
+  <ul class=taxonomy-list>
   {{ range $index, $taxonomy := sort . -}}
-    <li>
+    <li class="list-item-inline">
       <a href="{{ .RelPermalink }}">{{ if eq $.taxonomy "tags" }}#{{ end }}{{ .LinkTitle }}</a>
     </li>
   {{ end -}}

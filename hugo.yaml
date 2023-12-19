@@ -19,10 +19,6 @@ params:
     - name: 'Rugo'
       url: 'https://github.com/royarg02/rugo'
 
-  gpg:
-    key:
-    fingerprint:
-
   oss:
     source: 'https://github.com/royarg02/rugo'
     license:

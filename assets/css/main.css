@@ -26,7 +26,7 @@ a {
     text-decoration: none; /* remove underlines*/
 }
 
-a:not(.anchor):not(.taxonomylist *):hover {
+a:not(.anchor):not(.taxonomy-list *):not(#site-title *):hover {
     text-decoration: underline;
 }
 
@@ -50,6 +50,11 @@ ul {
 
 li {
     margin: 0rem 0rem 0.25rem 0rem;
+}
+
+li.list-item-inline {
+    display: inline-block;
+    margin-inline-end: 0.25rem;
 }
 
 blockquote {
@@ -145,10 +150,6 @@ footer {
     border-radius: 0.75rem 0.75rem 0rem 0rem;
 }
 
-#site-title > a:hover {
-    text-decoration: none !important;
-}
-
 #sidebar {
     display: flex;
     flex-direction: column;
@@ -166,25 +167,15 @@ footer {
     flex-grow: 2;
 }
 
-#profiles > li {
-    display: inline;
-}
-
-.taxonomylist > li {
-    display: inline-block;
+.taxonomy-list > li {
     border-radius: 1.125rem;
     background-color: var(--tertiary-container);
 }
 
-.taxonomylist > li > a {
+.taxonomy-list > li > a {
     display: block;
     padding: 0.5rem 1rem 0.5rem 1rem;
     color: var(--on-tertiary-container);
-}
-
-#profiles > li,
-.taxonomylist > li {
-    margin-inline-end: 0.25rem;
 }
 
 .figure-float-right {
@@ -198,8 +189,4 @@ footer {
 
 .anchor:hover {
     color: var(--tertiary);
-}
-
-.svg-container {
-    font-size: 0.75rem;
 }

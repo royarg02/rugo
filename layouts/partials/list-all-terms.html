@@ -6,9 +6,9 @@
 {{- $terms := index .context.Site.Taxonomies .term -}}
 {{- $termsCount := len $terms -}}
 <h2>{{ partial "pluralize.html" (dict "count" $termsCount "term" .term) }}</h2>
-<ul class="taxonomylist">
+<ul class="taxonomy-list">
   {{ range $terms.Alphabetical }}
-    <li>
+    <li class="list-item-inline">
       <a href="{{ .Page.Permalink }}">
         {{- .Page.LinkTitle | markdownify }}
         {{- if default true $.context.Site.Params.includeCountWithTerm -}}
