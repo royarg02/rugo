@@ -10,7 +10,7 @@
     <h1 id="content-title">{{ .LinkTitle | markdownify }}</h1>
   {{- end }}
   {{ if .IsPage -}}
-    <p>Published on {{ .Date | dateFormat ":date_medium" }}</p>
+    <p>Published on {{ .Date | dateFormat ":date_medium" }} • {{ partial "pluralize.html" (dict "count" .ReadingTime "term" "min") }} read</p>
     {{ partial "list-content-taxonomies" (dict "taxonomy" "tags" "context" .)}}
     {{- if default (gt .WordCount 400) .Params.toc -}}
       {{- with .TableOfContents -}}

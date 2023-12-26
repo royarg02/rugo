@@ -3,7 +3,7 @@
   v. 2.0. If a copy of the MPL was not distributed with this file, You can
   obtain one at https://mozilla.org/MPL/2.0/.
 */}}
-<h{{ .Level }} id="{{ .Anchor | safeURL }}">{{ .PlainText }}
+<h{{ .Level }} id="{{ .Anchor | safeURL }}">{{ .Text | safeHTML }}
   {{- if eq .Page.Kind "page" }}
     <a href="#{{ .Anchor | safeURL }}" class="anchor">¶</a>
   {{ end -}}
