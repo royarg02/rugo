@@ -4,11 +4,6 @@
   obtain one at https://mozilla.org/MPL/2.0/.
 */}}
 {{ define "main" }}
-  {{ $count := len .Pages }}
-  <h2>{{ partial "pluralize.html" (dict "count" $count "term" "post")}}</h2>
-  <ul>
-    {{ range .Pages }}
-      <li><a href="{{ partial "page-permalink.html" . }}">{{ .LinkTitle | markdownify }}</a></li>
-    {{ end }}
-  </ul>
+  <h2>{{ partial "pluralize.html" (dict "count" (len .Pages) "term" "item") }}</h2>
+  {{ partial "list-section.html" (dict "items" .Pages ) }}
 {{ end }}

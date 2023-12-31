@@ -3,11 +3,16 @@
   v. 2.0. If a copy of the MPL was not distributed with this file, You can
   obtain one at https://mozilla.org/MPL/2.0/.
 */}}
-{{- $itemCount := default 5 .context.Site.Params.maxSectionListItems -}}
-{{- $items := where .context.Site.RegularPages.ByPublishDate.Reverse "Section" "=" .section -}}
+{{- $items := default (where site.RegularPages.ByPublishDate.Reverse "Section" "=" .section) .items -}}
+{{- $itemCount := default (len $items) .count -}}
 <ul>
-  {{- range  first $itemCount $items }}
-    <li><a href="{{ partial "page-permalink.html" . }}">{{ .LinkTitle | markdownify }}</a></li>
+  {{- range first $itemCount $items }}
+    <li>
+      {{ if default true site.Params.datesInSectionList -}}
+        <code><time>{{ .Date | dateFormat "Jan 02, 2006" }}</time></code>&#32;•&#32;
+      {{- end -}}
+      <a href="{{ partial "page-permalink.html" . }}">{{ .LinkTitle | markdownify }}</a>
+    </li>
   {{- end }}
   {{ if gt (len $items) $itemCount -}}
     <li><a href="{{ absURL .section }}">See more {{ replace .section "-" " " }}s...</a></li>
