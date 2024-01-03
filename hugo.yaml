@@ -11,8 +11,8 @@ params:
 
   termsInSection: true
   includeCountWithTerm: true
-  datesInSectionList: true
-  maxSectionTruncatedListItems: 5
+  datesInPageList: true
+  maxTruncatedPageListItems: 5
 
   websiteCredits:
     - name: 'Hugo'

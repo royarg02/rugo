@@ -5,5 +5,5 @@
 */}}
 {{ define "main" }}
   <h2>{{ partial "pluralize.html" (dict "count" (len .Pages) "term" "item") }}</h2>
-  {{ partial "list-section.html" (dict "items" .Pages ) }}
+  {{ partial "list-pages.html" (dict "page" .) }}
 {{ end }}
