@@ -6,12 +6,12 @@
 <header>
   <h1 id="site-title"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
   {{ if not (or (eq .Page.Kind "404") .IsHome) -}}
-    {{ partial "list-content-taxonomies" (dict "taxonomy" "categories" "context" .) }}
+    {{ partial "list-content-taxonomies.html" (dict "taxonomy" "categories" "context" .) }}
     <h1 id="content-title">{{ .LinkTitle | markdownify }}</h1>
   {{- end }}
   {{ if .IsPage -}}
     <p>Published on {{ .Date | dateFormat ":date_medium" }} • {{ partial "pluralize.html" (dict "count" .ReadingTime "term" "min") }} read</p>
-    {{ partial "list-content-taxonomies" (dict "taxonomy" "tags" "context" .)}}
+    {{ partial "list-content-taxonomies.html" (dict "taxonomy" "tags" "context" .)}}
     {{- if default (gt .WordCount 400) .Params.toc -}}
       {{- with .TableOfContents -}}
         {{ if ne . "<nav id=\"TableOfContents\"></nav>" }}
@@ -21,13 +21,5 @@
       {{- end -}}
     {{- end -}}
   {{- end }}
-  {{- with .Site.Menus.main }}
-    <nav>
-      <ul>
-        {{ range . -}}
-          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
-        {{ end -}}
-      </ul>
-    </nav>
-  {{ end -}}
+  {{ partial "menu.html" . }}
 </header>
