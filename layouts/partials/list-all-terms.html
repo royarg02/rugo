@@ -10,7 +10,7 @@
   {{ range $terms.Alphabetical }}
     <li class="list-item-inline">
       <a href="{{ .Page.Permalink }}">
-        {{- .Page.LinkTitle | markdownify }}
+        {{- .Term }}
         {{- if default true $.context.Site.Params.includeCountWithTerm -}}
           ({{ .Count }})
         {{- end -}}
