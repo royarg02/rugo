@@ -3,11 +3,12 @@
   v. 2.0. If a copy of the MPL was not distributed with this file, You can
   obtain one at https://mozilla.org/MPL/2.0/.
 */}}
-{{- $items := .page.Pages.ByPublishDate.Reverse -}}
+{{- $items := .page.Pages -}}
+{{- if .recursive }}{{ $items = .page.RegularPagesRecursive }}{{ end -}}
 {{- $itemCount := len $items -}}
 {{- if .truncated }}{{ $itemCount = site.Params.maxTruncatedPageListItems }}{{ end -}}
 <ul>
-  {{- range first $itemCount $items }}
+  {{- range first $itemCount $items.ByPublishDate.Reverse }}
     <li>
       {{ if default true site.Params.datesInPageList -}}
         <code><time>{{ .Date | dateFormat "Jan 02, 2006" }}</time></code>&#32;•&#32;
@@ -15,7 +16,7 @@
       <a href="{{ partial "page-permalink.html" . }}">{{ .LinkTitle | markdownify }}</a>
     </li>
   {{- end }}
-  {{ if gt (len $items) $itemCount -}}
+  {{ if and (not .recursive) (gt (len $items) $itemCount) -}}
     <li><a href="{{ absURL .page.Section }}">See more {{ replace .page.Section "-" " " }}s...</a></li>
   {{- end }}
 </ul>
